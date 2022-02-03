@@ -1,0 +1,25 @@
+class Sand{
+	constructor(_x,_y){
+		this.type="sand";
+		this.x=_x;
+		this.y=_y;
+	}
+	Render(){
+		fill(220,190,140)
+		console.log('a')
+		rect(this.x*CellSize,this.y*CellSize,CellSize,CellSize);
+	}
+	Update(){
+		if(this.y>=CellCols){
+			this.y=CellCols;
+			return;
+		}
+		if(!Board.GetCell(this.x,this.y+1)){
+			this.y++;
+			Board.SetCell(this.x,this.y+1,this);
+		}
+		else{
+			Board.SetCell(this.x,this.y,this);
+		}
+	}
+}
