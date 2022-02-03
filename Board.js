@@ -34,12 +34,14 @@ class Board{
 				if(this.grid[i][j]!=undefined)
 					this.grid[i][j].Update();
 			}
+			console.log(this.ngrid[i])
 			this.grid[i]=this.ngrid[i].slice(0);
 		}
 		this.ngrid=Empty2DArray();
 	}
 	
 	SetCell(r,c,cell){
+		console.log(cell)
 		this.ngrid[r][c]=cell;
 	}
 	GetCell(r,c){
