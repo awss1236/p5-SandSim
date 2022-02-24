@@ -21,7 +21,7 @@ class Board{
 				}
 				else{
 					//console.log('undefined')
-					fill(200);
+					fill(255);
 					rect(i*CellSize,j*CellSize,CellSize,CellSize);
 				}
 			}
@@ -34,17 +34,18 @@ class Board{
 				if(this.grid[i][j]!=undefined)
 					this.grid[i][j].Update();
 			}
-			console.log(this.ngrid[i])
 			this.grid[i]=this.ngrid[i].slice(0);
 		}
-		this.ngrid=Empty2DArray();
+		this.ngrid=Empty2DArray(CellRows,CellCols);
 	}
 	
 	SetCell(r,c,cell){
-		console.log(cell)
 		this.ngrid[r][c]=cell;
 	}
 	GetCell(r,c){
+		if(r>=CellRows||r<0||c<0||c>=CellCols){
+			return "edge";
+		}
 		return this.grid[r][c];
 	}
 }

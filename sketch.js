@@ -7,6 +7,7 @@ const ScrW=400,
 let B;
 function setup() {
   createCanvas(400, 400);
+  noStroke()
   B=new Board();
   B.SetCell(2,2,new Sand(2,2))
 }

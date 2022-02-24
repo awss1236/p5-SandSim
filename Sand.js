@@ -6,7 +6,6 @@ class Sand{
 	}
 	Render(){
 		fill(220,190,140)
-		console.log('a')
 		rect(this.x*CellSize,this.y*CellSize,CellSize,CellSize);
 	}
 	Update(){
@@ -14,12 +13,12 @@ class Sand{
 			this.y=CellCols;
 			return;
 		}
-		if(!Board.GetCell(this.x,this.y+1)){
+		if(B.GetCell(this.x,this.y+1)!=new Sand()&&B.GetCell(this.x,this.y+1)!="edge"){
 			this.y++;
-			Board.SetCell(this.x,this.y+1,this);
+			B.SetCell(this.x,this.y+1,this);
 		}
 		else{
-			Board.SetCell(this.x,this.y,this);
+			B.SetCell(this.x,this.y,this);
 		}
 	}
 }
