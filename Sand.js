@@ -1,19 +1,18 @@
-class Sand{
+class Sand extends Air{
 	constructor(_x,_y){
+		super(_x,_y)
 		this.type="sand";
-		this.x=_x;
-		this.y=_y;
+		this.c=color(220,190,140)
 	}
-	Render(){
-		fill(220,190,140)
-		rect(this.x*CellSize,this.y*CellSize,CellSize,CellSize);
-	}
+
 	Update(){
 		if(this.y>=CellCols){
 			this.y=CellCols;
 			return;
 		}
-		if(B.GetCell(this.x,this.y+1)!=new Sand()&&B.GetCell(this.x,this.y+1)!="edge"){
+		console.log(B.GetCell(this.x,this.y+1))
+		if(B.GetCell(this.x,this.y+1)&&B.GetCell(this.x,this.y+1).type!="sand"){
+
 			this.y++;
 			B.SetCell(this.x,this.y+1,this);
 		}

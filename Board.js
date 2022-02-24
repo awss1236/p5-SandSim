@@ -2,7 +2,11 @@ function Empty2DArray(rows,cols){
 	let out=new Array(rows)
 	for(let i=0;i<rows;i++){
 		out[i]=new Array(cols)
+		for(let j=0;j<cols;j++){
+			out[i][j]=new Air(i,j)
+		}
 	}
+	//console.log(out)
 	return out;
 }
 
@@ -13,17 +17,10 @@ class Board{
 	}
 
 	Render(){
+		//console.log("renderin")
 		for(let i=0;i<CellRows;i++){
 			for(let j=0;j<CellCols;j++){
-				if(this.grid[i][j]!=undefined){
-					//console.log('defined');
-					this.grid[i][j].Render();
-				}
-				else{
-					//console.log('undefined')
-					fill(255);
-					rect(i*CellSize,j*CellSize,CellSize,CellSize);
-				}
+				this.grid[i][j].Render();
 			}
 		}
 	}
@@ -31,8 +28,7 @@ class Board{
 	Update(){
 		for(let i=0;i<CellRows;i++){
 			for(let j=0;j<CellCols;j++){
-				if(this.grid[i][j]!=undefined)
-					this.grid[i][j].Update();
+				this.grid[i][j].Update();
 			}
 			this.grid[i]=this.ngrid[i].slice(0);
 		}
